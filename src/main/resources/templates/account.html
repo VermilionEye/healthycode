@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "/static/css/account.css" rel = "stylesheet">
+    <link href = "/static/css/header.css" rel = "stylesheet">
+    <link href = "/static/css/footer.css" rel = "stylesheet">
+    <title>Профиль</title>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header_body">
+            <a href="/account" class="header_logo">
+                <img src="/static/images/icon.png" alt="">
+            </a>
+            <div  class="notification">
+                <img id="notes" src="/static/images/notes.png">
+                <div class="notes">
+                    <a href="" class="note">У вас нет новых уведомлений!</a>
+                </div>
+            </div>
+            <div class="header_burger">
+                <span> </span>
+            </div>
+            <nav class="header_menu">
+                <ul class="header_list">
+                    <li>
+                        <a href="/appointment" class="header_link">Записаться к врачу</a>
+                    </li>
+                    <li>
+                        <a href="/account" class="header_link">Профиль</a>
+                    </li>
+                    <li>
+                        <a href="/allAppointments" class="header_link">История записей</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="profile-card">
+        <h2>Личные данные</h2>
+        <div class="user-info" th:object="${user}">
+            <label>Имя:</label>
+            <p th:text="${' ' + user.getName()}"></p>
+            <label>Фамилия:</label>
+            <p th:text="${' ' + user.getUsername()}"></p>
+            <label>Телефон:</label>
+            <p th:text="${' ' + user.getPhoneNumber()}"></p>
+            <label>Почта:</label>
+            <p th:text="${' ' + user.getUsername()}"></p>
+        </div>
+        <form action="/logout" method="GET">
+            <button class="logout-button" type="submit">Выйти</button>
+        </form>
+    </div>
+
+
+    <div class="feeling-form">
+        <h2>Как вы себя чувствуете</h2>
+        <form>
+            <label for="description">Описание самочувствия:</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+
+            <label for="temperature">Температура:</label>
+            <input type="text" id="temperature" name="temperature">
+
+            <label for="symptoms">Что беспокоит:</label>
+            <textarea id="symptoms" name="symptoms" rows="4" ></textarea>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <div class="footergrid">
+        <div class="map">
+            <h3>Я на карте</h3>
+            <iframe id="mapitem" align="center" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1397.4722110950108!2d37.47584622082386!3d55.66090140137544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54d9fae388053%3A0xa621a3c9b87bb98f!2z0L_RgC4g0JLQtdGA0L3QsNC00YHQutC-0LPQviwg0JzQvtGB0LrQstCwLCAxMTk1NzE!5e0!3m2!1sru!2sru!4v1695835009242!5m2!1sru!2sru"></iframe>
+        </div>
+        <div class="about">
+            <h3>Обо мне</h3>
+            <div class="aboutcont">
+                <a>
+                    Меня зовут Царёв Георгий Дмитриевич. Я студент третьего курса РТУ МИРЭА по специальности 09.03.04, Программная инженерия.
+                    Это приложение является моей курсовой работой по архитектуре клиент-серверных приложений
+                    работа по этому предмету. По всем вопросам и предложениям писать мне в Telegram или ВКонтакте.
+                </a>
+            </div>
+
+        </div>
+        <div class="quicklinks">
+            <h3>Ссылки</h3>
+            <ul type="none" class="linkslist">
+                <li><a href="">Регистрация</a></li>
+                <li><a href="">Политика конфиденциальности</a></li>
+                <li><a href="">Поддержать проект</a></li>
+                <li><a href="">Помощь</a></li>
+                <li><a href="">Прочее</a></li>
+            </ul>
+
+        </div>
+
+        <div class="contacts">
+            <h3>Контакты</h3>
+
+            <ul type="none" class="cont">
+                <li><img src="/static/images/map.png" width="20px" height="20px"><a>      Россия, город Москва, проспект Вернадского, дом 86, строение 1</a></li>
+                <li><img src="/static/images/mail.png" width="20px" height="13.3px"><a href="mailto:georg.tsarev@mail.ru">     georg.tsarev@mail.ru</a></li>
+                <li><img src="/static/images/phone.png" width="20px" height="20px"><a href="tel:+79208002004">    +7-920-800-20-04</a></li>
+            </ul>
+            <div class="social">
+                <div class="button"><a href="https://vk.com/c0ffeed" target="_blank"><img src="/static/images/vk.png" ></a></div>
+                <div class="button"><a href="https://t.me/Coffensive" target="_blank"><img src="/static/images/tg.png"></a></div>
+                <div class="button"><a href="https://github.com/VermilionEye" target="_blank"><img src="/static/images/github.png"></a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

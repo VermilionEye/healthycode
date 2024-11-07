@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel = "stylesheet" href = "/static/css/auth.css">
+    <link rel = "stylesheet" href = "/static/css/register.css">
+</head>
+<body>
+<section>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="box">
+        <div class="square" style="--i:0;"></div>
+        <div class="square" style="--i:1;"></div>
+        <div class="square" style="--i:2;"></div>
+        <div class="square" style="--i:3;"></div>
+        <div class="square" style="--i:4;"></div>
+        <div class="container">
+            <div class="form">
+                <form id="loginForm" class="logForm" th:action="@{/login}" th:object="${userReg}" th:method="POST">
+                    <h2>Авторизация</h2>
+                    <div class="inputBox">
+                        <input type="text" id="loginUsername" placeholder="Имя пользователя" th:field="*{username}" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" id="loginPassword" placeholder="Пароль" th:field="*{password}" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Войти">
+                        <br>
+                        <br>
+                        <input type="submit" id = "registerNow" class = "buttonSmaller" onclick="clearLogIn()" value="У меня еще нет аккаунта">
+                    </div>
+                </form>
+
+                <form id="regForm" class="logForm" style="display: none;" th:action="@{/reg}" th:object="${userReg}" th:method = "POST">
+                    <h2>Регистрация</h2>
+                    <div class = "textInput">
+                        <div class="inputBox">
+                            <input type="text" id="username" pattern = "^[а-яА-ЯёЁa-zA-Z]{3,}$" placeholder="Имя" th:field="*{name}" required>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" id="userSurname" pattern = "^[а-яА-ЯёЁa-zA-Z]{3,}$"  placeholder="Фамилия" th:field="*{surname}" required>
+                        </div>
+                        <div class="inputBox">
+                            <input type="email" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" placeholder="Почта" th:field="*{username}" required>
+                        </div>
+                        <div class="inputBox">
+                            <input type="tel" pattern="\+?[\d]{5,40}" id="phoneNumber" placeholder="Номер телефона" th:field="*{phoneNumber}" required>
+                        </div>
+                        <div class="inputBox">
+                            <input type="password" id="password" placeholder="Пароль" th:field="*{password}" oninput="showConfirmation()" required>
+                        </div>
+                        <div class="inputBox">
+                            <input type="password" id="confirmation" style="display: none;" placeholder="Повторите пароль" required>
+                        </div>
+                        <div id="error-message" style="display: none; color: red;">Пароли не совпадают</div>
+                        <div class="inputBox">
+                            <input type="submit" onclick="conf()" value="Зарегистрироваться">
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" id="loginNow" class="buttonSmaller" onclick="clearReg()" value="У меня есть аккаунт">
+                        </div>
+                    </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</section>
+<script src="/static/js/sign.js"></script>
+</body>
+</html>
